@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
+    
     private Animator _animator;
     private Rigidbody _rigibody;
 
