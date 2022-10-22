@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _runSpeed;
     [SerializeField] private float _accelerationTime;
+    
     private Animator _animator;
     private float _idleSpeed;
     private float _defaultAcceleration;
