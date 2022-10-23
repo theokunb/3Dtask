@@ -6,7 +6,7 @@ public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed;
 
-    void Update()
+    private void Update()
     {
         if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {

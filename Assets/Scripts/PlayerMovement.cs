@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float _runElapsedTime;
     private float _currentRunSpeed;
 
-    void Start()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
         _idleSpeed = 0;
@@ -24,11 +25,11 @@ public class PlayerMovement : MonoBehaviour
         _walkElapsedTime = 0;
     }
 
-    void Update()
+    private void Update()
     {
         if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            _animator.SetFloat("Speed", _speed);
+            _animator.SetFloat(OrtizAnimationController.Params.Speed, _speed);
             _walkElapsedTime += Time.deltaTime;
 
             if(_walkElapsedTime > _accelerationTime)
@@ -40,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            _animator.SetBool("BackWalk", true);
-            _animator.SetFloat("Speed", _speed);
+            _animator.SetBool(OrtizAnimationController.Params.BackWalk, true);
+            _animator.SetFloat(OrtizAnimationController.Params.Speed, _speed);
             _walkElapsedTime += Time.deltaTime;
 
             if(_walkElapsedTime > _accelerationTime)
@@ -54,14 +55,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _walkElapsedTime = 0;
-            _animator.SetBool("BackWalk", false);
-            _animator.SetFloat("Speed", _idleSpeed);
+            _animator.SetBool(OrtizAnimationController.Params.BackWalk, false);
+            _animator.SetFloat(OrtizAnimationController.Params.Speed, _idleSpeed);
         }
 
 
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            _animator.SetBool("Run", true);
+            _animator.SetBool(OrtizAnimationController.Params.Run, true);
             _runElapsedTime += Time.deltaTime;
 
             if(_runElapsedTime > _accelerationTime)
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-            _animator.SetBool("Run", false);
+            _animator.SetBool(OrtizAnimationController.Params.Run, false);
             _runElapsedTime = 0;
             _currentRunSpeed = _defaultAcceleration;
         }

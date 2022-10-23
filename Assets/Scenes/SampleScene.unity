@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57daddb4afdff0e4fa4aef3d74aedb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _volumePerSecond: 0.1
+  _volumePerSecond: 0.2
 --- !u!82 &482953884
 AudioSource:
   m_ObjectHideFlags: 0
